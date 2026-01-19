@@ -115,7 +115,7 @@ const TrekGenieInfo = () => {
                       href="https://scoutripper.com/trekgenie/"
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="bg-[#F8FAFC] hover:bg-slate-100 transition-colors cursor-pointer rounded-full h-[52px] px-6 flex items-center justify-between text-slate-400 text-[15px] group border border-transparent hover:border-slate-200"
+                      className="bg-[#F8FAFC] hover:bg-slate-100 transition-colors cursor-pointer rounded-2xl h-[52px] px-6 flex items-center justify-between text-slate-400 text-[15px] group border border-transparent hover:border-slate-200"
                     >
                         <div className="flex items-center gap-3 group-hover:text-slate-500 transition-colors">
                             <MessageCircle size={18} />
