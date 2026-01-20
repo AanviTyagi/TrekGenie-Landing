@@ -25,15 +25,26 @@ const faqData = [
     {
       question: "What if I'm a complete beginner?",
       answer: "Scoutripper is beginner-friendly! Use our difficulty filters to find easy treks, and TrekGenie can recommend options specifically suited for first-time trekkers. Each trek listing includes detailed information about fitness requirements."
+    },
+    {
+      question: "What should I pack for a trek?",
+      answer: "We provide a comprehensive packing list for each trek. Generally, you'll need good trekking shoes, warm layers, a backpack, and personal essentials. You can find detailed packing guides on our blog."
+    },
+    {
+      question: "How do cancellations work?",
+      answer: "Cancellation policies vary by organizer. You can view the specific cancellation policy on each trek's details page before booking. We strive to be transparent so you can book with confidence."
     }
   ];
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [showAll, setShowAll] = useState(false);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  const visibleFaqs = showAll ? faqData : faqData.slice(0, 5);
 
   return (
     <section id="faq-section" className="py-24 bg-slate-50 relative overflow-hidden">
@@ -58,7 +69,7 @@ const FAQ = () => {
 
         {/* FAQ Grid */}
         <div className="space-y-4">
-            {faqData.map((item, index) => (
+            {visibleFaqs.map((item, index) => (
                 <div 
                     key={index}
                     className={`bg-white rounded-2xl transition-all duration-300 overflow-hidden ${
@@ -71,7 +82,7 @@ const FAQ = () => {
                         onClick={() => toggleFAQ(index)}
                         className="w-full flex items-center justify-between p-6 md:px-8 text-left focus:outline-none group"
                     >
-                        <span className="text-[15px] font-bold font-display text-slate-900 pr-8">
+                        <span className="text-[1.1rem] font-medium font-display text-slate-900 pr-8">
                             {item.question}
                         </span>
                         <div className={`flex-shrink-0 transition-transform duration-300 ${openIndex === index ? 'rotate-180 text-[#4FD1C5]' : 'text-slate-400 group-hover:text-teal-500'}`}>
@@ -88,6 +99,40 @@ const FAQ = () => {
                     </div>
                 </div>
             ))}
+        </div>
+
+        {/* Footer Actions: Show More or Contact Card */}
+        <div className="mt-8 flex justify-center">
+          {!showAll ? (
+            <button 
+              onClick={() => setShowAll(true)}
+              className="flex items-center gap-2 text-slate-900 font-bold text-sm tracking-wide bg-transparent hover:opacity-75 transition-opacity"
+            >
+              Show more
+              <ChevronDown size={16} />
+            </button>
+          ) : (
+            <div className="flex flex-col items-center gap-6 w-full animate-fade-in">
+                <div className="w-full bg-white rounded-2xl border border-teal-500/30 p-6 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm">
+                  <div className="text-center md:text-left">
+                    <h4 className="text-slate-900 font-bold text-sm mb-1">Frequently Asked Questions</h4>
+                    <p className="text-slate-500 text-sm">We would be happy to help you with whatever questions you have.</p>
+                  </div>
+                  <button className="px-6 py-2.5 rounded-xl bg-[#4FD1C5] hover:bg-teal-500 text-white font-bold text-sm flex items-center gap-2 transition-colors shadow-lg shadow-teal-500/20 whitespace-nowrap">
+                    Ask us Anything
+                    <span className="text-lg">→</span>
+                  </button>
+                </div>
+
+                <button 
+                  onClick={() => setShowAll(false)}
+                  className="flex items-center gap-2 text-slate-900 font-bold text-sm tracking-wide bg-transparent hover:opacity-75 transition-opacity"
+                >
+                  Show less
+                  <ChevronUp size={16} />
+                </button>
+            </div>
+          )}
         </div>
 
       </div>

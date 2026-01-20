@@ -34,7 +34,7 @@ const HowItWorks = () => {
               <div className="w-16 h-16 rounded-full bg-blue-500 text-white flex items-center justify-center mb-6 shadow-lg shadow-blue-500/20 transition-transform duration-300 group-hover:scale-110">
                 <MousePointerClick size={32} />
               </div>
-              <h3 className="text-xl font-display font-bold text-slate-900 mb-3">
+              <h3 className="text-[1.1rem] font-display font-medium text-slate-900 mb-3">
                 Select Treks
               </h3>
               <p className="text-slate-500 leading-relaxed text-sm font-sans">
@@ -52,7 +52,7 @@ const HowItWorks = () => {
               <div className="w-16 h-16 rounded-full bg-teal-500 text-white flex items-center justify-center mb-6 shadow-lg shadow-teal-500/20 transition-transform duration-300 group-hover:scale-110">
                 <BarChart3 size={32} />
               </div>
-              <h3 className="text-xl font-display font-bold text-slate-900 mb-3">
+              <h3 className="text-[1.1rem] font-display font-medium text-slate-900 mb-3">
                 Compare Details
               </h3>
               <p className="text-slate-500 leading-relaxed text-sm font-sans">
@@ -70,7 +70,7 @@ const HowItWorks = () => {
               <div className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center mb-6 shadow-lg shadow-green-500/20 transition-transform duration-300 group-hover:scale-110">
                 <CheckCircle2 size={32} />
               </div>
-              <h3 className="text-xl font-display font-bold text-slate-900 mb-3">
+              <h3 className="text-[1.1rem] font-display font-medium text-slate-900 mb-3">
                 Choose Confidently
               </h3>
               <p className="text-slate-500 leading-relaxed text-sm font-sans">

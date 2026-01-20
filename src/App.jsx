@@ -38,10 +38,10 @@ function App() {
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 transition-all duration-300 ${
+      <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white shadow-lg' 
-          : 'bg-transparent py-6'
+          ? 'bg-white' 
+          : 'bg-transparent'
       }`}>
         <div className="flex items-center justify-between max-w-[1320px] mx-auto w-full relative">
           {/* Logo */}
@@ -49,23 +49,23 @@ function App() {
             <img 
               src={isScrolled ? logoTeal : logo} 
               alt="Scoutripper" 
-              className="h-8 md:h-10 w-auto object-contain" 
+              className="h-10 md:h-12 w-auto object-contain" 
             />
           </div>
         
 
         {/* Desktop Navigation - Centered */}
-        <div className={`hidden md:flex items-center gap-8 text-sm font-medium font-sans absolute left-1/2 -translate-x-1/2 ${isScrolled ? 'text-slate-900' : 'text-gray-300'}`}>
+        <div className={`hidden md:flex items-center gap-8 text-sm font-medium font-sans ml-12 mr-auto ${isScrolled ? 'text-slate-900' : 'text-gray-300'}`}>
           <button onClick={() => document.getElementById('how-it-works').scrollIntoView({ behavior: 'smooth' })} className={`hover:text-teal-500 transition-colors ${isScrolled ? 'hover:text-teal-600' : 'hover:text-white'}`}>How It Works</button>
           <button onClick={() => document.getElementById('compare-section').scrollIntoView({ behavior: 'smooth' })} className={`hover:text-teal-500 transition-colors ${isScrolled ? 'hover:text-teal-600' : 'hover:text-white'}`}>Compare</button>
           <button onClick={() => document.getElementById('trek-genie-section').scrollIntoView({ behavior: 'smooth' })} className={`hover:text-teal-500 transition-colors ${isScrolled ? 'hover:text-teal-600' : 'hover:text-white'}`}>TrekGenie</button>
           <button onClick={() => document.getElementById('faq-section').scrollIntoView({ behavior: 'smooth' })} className={`hover:text-teal-500 transition-colors ${isScrolled ? 'hover:text-teal-600' : 'hover:text-white'}`}>FAQ</button>
-          <a href="#" className={`hover:text-teal-500 transition-colors ${isScrolled ? 'hover:text-teal-600' : 'hover:text-white'}`}>Destinations</a>
+          {/* <a href="#" className={`hover:text-teal-500 transition-colors ${isScrolled ? 'hover:text-teal-600' : 'hover:text-white'}`}>Destinations</a> */}
           <a href="https://scoutripper.com/blog/" target="_blank" rel="noopener noreferrer" className={`hover:text-teal-500 transition-colors ${isScrolled ? 'hover:text-teal-600' : 'hover:text-white'}`}>Blog</a>
         </div>
 
-        <div className="flex items-center gap-4 ml-auto">
-          <button className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-full border bg-white/5  backdrop-blur-sm transition-colors text-sm font-medium
+        <div className="flex items-center gap-4">
+          <button className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-xl border bg-white/5  backdrop-blur-sm transition-colors text-sm font-medium
              ${isScrolled 
                 ? 'border-[#4FD1C5] text-[#4FD1C5] hover:bg-teal-50' 
                 : 'border-gray-600 text-gray-300 hover:bg-white/10'

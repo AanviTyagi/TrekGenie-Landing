@@ -28,7 +28,7 @@ const WhyCompare = () => {
                     </div>
                 </div>
                 <div>
-                   <h3 className="text-2xl font-bold text-slate-900 mb-3 font-display">
+                   <h3 className="text-[1.1rem] font-medium text-slate-900 mb-3 font-display">
                         Same Trek Name, Different Experiences
                    </h3>
                    <p className="text-slate-500 leading-relaxed font-sans text-lg">

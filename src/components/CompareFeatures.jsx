@@ -66,7 +66,7 @@ const CompareFeatures = () => {
               <div className={`w-12 h-12 rounded-full ${feature.color} text-white flex items-center justify-center mb-6 shadow-lg shadow-gray-200`}>
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-display font-bold text-slate-900 mb-3">
+              <h3 className="text-[1.1rem] font-display font-medium text-slate-900 mb-3">
                 {feature.title}
               </h3>
               <p className="text-slate-500 text-sm leading-relaxed font-sans">
@@ -82,7 +82,7 @@ const CompareFeatures = () => {
             href="https://scoutripper.com/compare-treks/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="h-14 px-10 rounded-full bg-gradient-to-r from-teal-400 to-cyan-400 hover:from-teal-500 hover:to-cyan-500 text-white font-bold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-xl shadow-teal-500/20"
+            className="h-14 px-10 rounded-2xl bg-gradient-to-r from-teal-400 to-cyan-400 hover:from-teal-500 hover:to-cyan-500 text-white font-bold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-xl shadow-teal-500/20"
           >
             Start Comparing Now
             <ArrowRight size={18} />

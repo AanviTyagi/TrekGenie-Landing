@@ -42,7 +42,7 @@ const ReadyToChoose = () => {
                 <ArrowRight size={20} />
             </a>
 
-            <button className="w-full sm:w-auto h-14 px-8 rounded-xl bg-white border-2 border-[#4FD1C5] text-[#4FD1C5] hover:bg-[#4FD1C5] hover:text-white font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-sm">
+            <button className="w-full sm:w-auto h-14 px-8 rounded-2xl bg-white border-2 border-teal-400 text-teal-400 hover:bg-gradient-to-r hover:from-teal-500 hover:to-cyan-500 hover:border-transparent hover:text-white font-bold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-sm hover:shadow-lg hover:shadow-teal-500/20">
                 <Compass size={20} />
                 Explore Destinations
             </button>
