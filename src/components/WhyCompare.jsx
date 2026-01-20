@@ -42,13 +42,13 @@ const WhyCompare = () => {
             {/* List Points */}
             <div className="space-y-6 md:pl-[4.25rem] text-slate-600 leading-relaxed font-sans text-lg">
                 <p>
-                    <span className="font-bold text-slate-900 font-display">The problem with guessing:</span> Most trekkers rely on Instagram reels, random blogs, or word-of-mouth to choose their treks. This often leads to mismatched expectations — picking a trek that's too hard, too easy, or doesn't fit their schedule and budget.
+                    <span className="font-md text-slate-900 font-display">The problem with guessing:</span> Most trekkers rely on Instagram reels, random blogs, or word-of-mouth to choose their treks. This often leads to mismatched expectations — picking a trek that's too hard, too easy, or doesn't fit their schedule and budget.
                 </p>
                 <p>
-                    <span className="font-bold text-slate-900 font-display">Hidden costs are real:</span> Many organizers advertise low base prices but add charges for gear rental, transport, or permits. Without comparison, you might end up paying 30-40% more than expected.
+                    <span className="font-md text-slate-900 font-display">Hidden costs are real:</span> Many organizers advertise low base prices but add charges for gear rental, transport, or permits. Without comparison, you might end up paying 30-40% more than expected.
                 </p>
                 <p>
-                    <span className="font-bold text-slate-900 font-display">Experience matters:</span> The quality of trek leaders, group size, safety protocols, and campsite facilities can make or break your adventure. These details are rarely visible upfront.
+                    <span className="font-md text-slate-900 font-display">Experience matters:</span> The quality of trek leaders, group size, safety protocols, and campsite facilities can make or break your adventure. These details are rarely visible upfront.
                 </p>
             </div>
 
