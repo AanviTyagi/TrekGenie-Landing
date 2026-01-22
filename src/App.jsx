@@ -9,6 +9,7 @@ import ComparisonVsGuessing from './components/ComparisonVsGuessing';
 import TrekGenieInfo from './components/TrekGenieInfo';
 import FAQ from './components/FAQ';
 import ReadyToChoose from './components/ReadyToChoose';
+import InspirationSection from './components/InspirationSection';
 import Footer from './components/Footer';
 
 function App() {
@@ -65,7 +66,7 @@ function App() {
         </div>
 
         <div className="flex items-center gap-4">
-          <button className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-xl border bg-white/5  backdrop-blur-sm transition-colors text-sm font-medium
+          <a href="https://scoutripper.com/compare-treks/" target="_blank" rel="noopener noreferrer" className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-xl border bg-white/5  backdrop-blur-sm transition-colors text-sm font-medium
              ${isScrolled 
                 ? 'border-[#4FD1C5] text-[#4FD1C5] hover:bg-teal-50' 
                 : 'border-gray-600 text-gray-300 hover:bg-white/10'
@@ -73,7 +74,7 @@ function App() {
           `}>
             <Search size={16} />
             <span>Compare</span>
-          </button>
+          </a>
           
           {/* Mobile Menu Button */}
           <button 
@@ -154,6 +155,7 @@ function App() {
         <TrekGenieInfo />
         <FAQ />
         <ReadyToChoose />
+        <InspirationSection />
       </div>
       <Footer />
       
@@ -174,16 +176,16 @@ function App() {
             <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Destinations</a>
             <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Blog</a>
             
-            <button 
-              onClick={() => {
-                document.getElementById('compare-section').scrollIntoView({ behavior: 'smooth' });
-                setIsMobileMenuOpen(false);
-              }}
-              className="flex items-center gap-2 px-6 py-3 rounded-full border border-gray-600 bg-white/5 hover:bg-white/10 transition-colors text-lg font-medium mt-4"
+            <a 
+              href="https://scoutripper.com/compare-treks/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-600 bg-white/5 hover:bg-white/10 transition-colors text-sm font-medium mt-4 text-gray-300"
             >
-              <Search size={20} />
+              <Search size={16} />
               <span>Compare</span>
-            </button>
+            </a>
         </div>
       )}
 

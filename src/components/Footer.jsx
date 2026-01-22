@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-[1320px] mx-auto px-4 xl:px-0 pb-[60px]">
         
         {/* Main Row */}
-        <div className="flex flex-col xl:flex-row justify-between xl:justify-start gap-[40px]">
+        <div className="flex flex-col xl:flex-row justify-between gap-[40px]">
           
           {/* Left Column */}
           <div className="xl:w-[33.33%] lg:w-[50%] flex flex-col">
@@ -48,7 +48,7 @@ const Footer = () => {
           </div>
 
           {/* Right Column */}
-          <div className="xl:w-[66.66%] lg:w-[50%]">
+          <div className="xl:w-[50%] lg:w-[50%]">
              <div className="flex flex-col gap-[30px]">
                 
                  {/* Newsletter */}
@@ -72,10 +72,10 @@ const Footer = () => {
                  </div>
 
                  {/* Links Row */}
-                 <div className="flex flex-col md:flex-row gap-[30px]">
+                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px]">
                      
                      {/* Community */}
-                     <div className="md:w-[33.33%] sm:w-[50%]">
+                     <div className="w-full">
                         <h5 className="text-[16px] font-medium mb-[30px]">Community</h5>
                         <div className="flex flex-col gap-[10px]">
                             <a href="https://scoutripper.com/page/about" className="hover:underline">About Us</a>
@@ -88,7 +88,7 @@ const Footer = () => {
                      </div>
 
                      {/* Support */}
-                     <div className="md:w-[33.33%] sm:w-[50%]">
+                     <div className="w-full">
                         <h5 className="text-[16px] font-medium mb-[30px]">Support</h5>
                         <div className="flex flex-col gap-[10px]">
                             <a href="https://wa.me/+919888454430" className="hover:underline">Chat on Whatsapp</a>
@@ -99,7 +99,7 @@ const Footer = () => {
                      </div>
 
                      {/* Other Services */}
-                     <div className="md:w-[33.33%] sm:w-[50%]">
+                     <div className="w-full">
                         <h5 className="text-[16px] font-medium mb-[30px]">Other Services</h5>
                         <div className="flex flex-col gap-[10px]">
                             <a href="https://www.scoutripper.com/tripgenie/" target="_blank" rel="noreferrer noopener" className="hover:underline">Plan with TripGenie</a>
@@ -120,7 +120,8 @@ const Footer = () => {
       </div>
 
       {/* Copyright Footer */}
-      <div className="max-w-[1320px] mx-auto px-4 xl:px-0 py-[30px] mt-[20px]">
+      <div className="border-t border-white/20 mt-[20px]">
+        <div className="max-w-[1320px] mx-auto px-4 xl:px-0 py-[20px]">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-[15px] font-medium text-center md:text-left">
                 Copyright © 2025 by Scoutripper
@@ -129,6 +130,7 @@ const Footer = () => {
                 Made with <span className="text-xl">❤️</span>
             </p>
           </div>
+        </div>
       </div>
 
     </footer>
