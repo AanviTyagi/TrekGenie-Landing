@@ -154,8 +154,8 @@ function App() {
         <ComparisonVsGuessing />
         <TrekGenieInfo />
         <FAQ />
-        <ReadyToChoose />
         <InspirationSection />
+        <ReadyToChoose />
       </div>
       <Footer />
       
@@ -171,7 +171,7 @@ function App() {
 
             <a href="#how-it-works" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>How It Works</a>
             <a href="#compare-section" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Compare</a>
-            <a href="#" className="text-2xl font-bold font-display text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>TrekGenie</a>
+            <a href="#trek-genie-section" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>TrekGenie</a>
             <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>FAQ</a>
             <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Destinations</a>
             <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Blog</a>

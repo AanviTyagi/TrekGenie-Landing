@@ -37,7 +37,7 @@ const InspirationSection = () => {
     <section className="bg-white py-[60px] text-slate-900 font-sans border-t border-gray-100">
        <div className="max-w-[1320px] mx-auto px-4 xl:px-0">
           <div className="mb-10">
-            <h2 className="text-[26px] md:text-[30px] font-bold text-[#1A2B48] mb-2">Get inspiration for your next trip</h2>
+            <h2 className="text-[2.2rem] font-semibold text-[#324b4c] leading-none mb-2">Get inspiration for your next trip</h2>
             <p className="text-gray-500">Experience the nature with our words.</p>
           </div>
           
@@ -62,6 +62,9 @@ const InspirationSection = () => {
                       <p className="text-[#697488] text-[15px] leading-relaxed">
                          {post.description}
                       </p>
+                      <span className="text-[#4FD1C5] text-[15px] font-medium mt-2 cursor-pointer hover:underline">
+                         Show more &gt;
+                      </span>
                    </div>
                 </a>
              ))}

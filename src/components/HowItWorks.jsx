@@ -3,77 +3,114 @@ import { MousePointerClick, BarChart3, CheckCircle2 } from 'lucide-react';
 
 const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="py-24 bg-[#FDFBF7] relative overflow-hidden">
+    <section id="how-it-works" className="py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#E0F7FA] text-[#38B2AC] text-[16px] font-bold tracking-normal mb-8">
-            Simple Process
-          </span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 mb-4">
-            How It Works
+        <div className="text-center mb-28">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-[#324b4c] mb-6">
+            How does it work?
           </h2>
-          <p className="text-slate-500 text-lg max-w-2xl mx-auto font-sans leading-relaxed">
+          <p className="text-slate-500 text-xl font-sans">
             Three simple steps to find your perfect trek
           </p>
         </div>
 
         {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 relative max-w-6xl mx-auto">
           
-          {/* Connector Line (Desktop) */}
-          <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-slate-100 -z-10"></div>
-
           {/* Step 1 */}
-          <div className="relative group">
-            <div className="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl hover:shadow-blue-500/20 border-b border-x border-stone-100 border-t-4 border-t-transparent hover:border-t-blue-500 h-full transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute top-0 left-0 w-10 h-10 rounded-tl-2xl rounded-br-2xl bg-teal-500 text-white flex items-center justify-center font-bold text-lg shadow-sm z-10 transition-colors duration-300 group-hover:bg-blue-500">
-                1
+          <div className="relative flex flex-col items-center group">
+            <div className="relative mb-10 z-10">
+              {/* Main Circle - Light Blue background */}
+              <div className="w-44 h-44 rounded-full bg-blue-50 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <MousePointerClick size={54} className="text-blue-500" />
               </div>
-              <div className="w-16 h-16 rounded-full bg-blue-500 text-white flex items-center justify-center mb-6 shadow-lg shadow-blue-500/20 transition-transform duration-300 group-hover:scale-110">
-                <MousePointerClick size={32} />
+              {/* Number Badge - Matches icon color */}
+              <div className="absolute top-0 -left-2 w-12 h-12 rounded-full bg-blue-500 text-white text-lg font-bold flex items-center justify-center shadow-md z-10 border-2 border-white">
+                01
               </div>
-              <h3 className="text-[1.1rem] font-display font-medium text-slate-900 mb-3">
-                Select Treks
-              </h3>
-              <p className="text-slate-500 leading-relaxed text-sm font-sans">
+            </div>
+            
+            <h3 className="text-2xl font-display font-bold text-[#324b4c] mb-5">
+              Select Treks
+            </h3>
+            <div className="max-w-[240px]">
+              <p className="text-slate-500 text-center leading-relaxed font-sans text-[16px]">
                 Choose any treks or destinations you're interested in exploring from our vast database.
               </p>
+            </div>
+
+            {/* Arrow 1 - Upward Curve with Gaps */}
+            <div className="hidden md:block absolute top-[60px] -right-[60%] w-[120%] z-0 pointer-events-none transform -translate-y-1/2">
+              <svg className="w-full h-24" viewBox="0 0 200 60" preserveAspectRatio="none">
+                <path 
+                  d="M40,50 Q100,10 160,40" 
+                  fill="none" 
+                  stroke="#4FD1C5" 
+                  strokeWidth="2.5" 
+                  strokeDasharray="6 6" 
+                  strokeLinecap="round"
+                />
+                <path d="M155 35 L162 40 L155 45" fill="none" stroke="#4FD1C5" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
           </div>
 
           {/* Step 2 */}
-          <div className="relative group">
-            <div className="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl hover:shadow-teal-500/20 border-b border-x border-stone-100 border-t-4 border-t-transparent hover:border-t-teal-500 h-full transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute top-0 left-0 w-10 h-10 rounded-tl-2xl rounded-br-2xl bg-teal-500 text-white flex items-center justify-center font-bold text-lg shadow-sm z-10">
-                2
+          <div className="relative flex flex-col items-center group">
+            <div className="relative mb-10 z-10">
+              {/* Main Circle - Light Teal background */}
+              <div className="w-44 h-44 rounded-full bg-teal-50 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <BarChart3 size={54} className="text-teal-500" />
               </div>
-              <div className="w-16 h-16 rounded-full bg-teal-500 text-white flex items-center justify-center mb-6 shadow-lg shadow-teal-500/20 transition-transform duration-300 group-hover:scale-110">
-                <BarChart3 size={32} />
+              {/* Number Badge - Matches icon color */}
+              <div className="absolute top-0 -left-2 w-12 h-12 rounded-full bg-teal-500 text-white text-lg font-bold flex items-center justify-center shadow-md z-10 border-2 border-white">
+                02
               </div>
-              <h3 className="text-[1.1rem] font-display font-medium text-slate-900 mb-3">
-                Compare Details
-              </h3>
-              <p className="text-slate-500 leading-relaxed text-sm font-sans">
+            </div>
+            <h3 className="text-2xl font-display font-bold text-[#324b4c] mb-5">
+              Compare Details
+            </h3>
+            <div className="max-w-[240px]">
+              <p className="text-slate-500 text-center leading-relaxed font-sans text-[16px]">
                 See difficulty, duration, cost & inclusions side-by-side to make the best choice.
               </p>
+            </div>
+
+            {/* Arrow 2 - Upward Curve with Gaps */}
+            <div className="hidden md:block absolute top-[60px] -right-[60%] w-[120%] z-0 pointer-events-none transform -translate-y-1/2">
+               <svg className="w-full h-24" viewBox="0 0 200 60" preserveAspectRatio="none">
+                <path 
+                  d="M40,50 Q100,10 160,40" 
+                  fill="none" 
+                  stroke="#4FD1C5" 
+                  strokeWidth="2.5" 
+                  strokeDasharray="6 6" 
+                  strokeLinecap="round"
+                />
+                <path d="M155 35 L162 40 L155 45" fill="none" stroke="#4FD1C5" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
           </div>
 
           {/* Step 3 */}
-          <div className="relative group">
-            <div className="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl hover:shadow-green-500/20 border-b border-x border-stone-100 border-t-4 border-t-transparent hover:border-t-green-500 h-full transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute top-0 left-0 w-10 h-10 rounded-tl-2xl rounded-br-2xl bg-teal-500 text-white flex items-center justify-center font-bold text-lg shadow-sm z-10 transition-colors duration-300 group-hover:bg-green-500">
-                3
+          <div className="relative flex flex-col items-center group">
+            <div className="relative mb-10 z-10">
+              {/* Main Circle - Light Green background */}
+              <div className="w-44 h-44 rounded-full bg-green-50 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <CheckCircle2 size={54} className="text-green-500" />
               </div>
-              <div className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center mb-6 shadow-lg shadow-green-500/20 transition-transform duration-300 group-hover:scale-110">
-                <CheckCircle2 size={32} />
+              {/* Number Badge - Matches icon color */}
+              <div className="absolute top-0 -left-2 w-12 h-12 rounded-full bg-green-500 text-white text-lg font-bold flex items-center justify-center shadow-md z-10 border-2 border-white">
+                03
               </div>
-              <h3 className="text-[1.1rem] font-display font-medium text-slate-900 mb-3">
-                Choose Confidently
-              </h3>
-              <p className="text-slate-500 leading-relaxed text-sm font-sans">
+            </div>
+            <h3 className="text-2xl font-display font-bold text-[#324b4c] mb-5">
+              Choose Confidently
+            </h3>
+            <div className="max-w-[240px]">
+              <p className="text-slate-500 text-center leading-relaxed font-sans text-[16px]">
                 Pick the trek that fits your fitness level, budget, and adventure goals perfectly.
               </p>
             </div>

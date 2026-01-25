@@ -51,8 +51,8 @@ const CompareFeatures = () => {
           <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#E0F7FA] text-[#38B2AC] text-[16px] font-bold tracking-normal mb-8">
             Comprehensive Data
           </span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 mb-6">
-            What You Can Compare
+          <h2 className="text-[2.2rem] font-display font-semibold text-[#324b4c] leading-none mb-6">
+            What You Can Compare ?
           </h2>
           <p className="text-slate-500 text-lg max-w-2xl mx-auto font-sans">
             Everything you need to make an informed decision, all in one place

@@ -25,7 +25,7 @@ const ComparisonVsGuessing = () => {
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 mb-4">
+          <h2 className="text-[2.2rem] font-display font-semibold text-[#324b4c] leading-none mb-4">
             Comparison vs Guessing
           </h2>
           <p className="text-slate-500 text-lg max-w-2xl mx-auto font-sans">

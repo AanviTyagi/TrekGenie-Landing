@@ -12,8 +12,8 @@ const WhyCompare = () => {
             <BookOpen size={18} />
             Expert Insight
           </span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 mb-6">
-            Why Comparing Treks Matters
+          <h2 className="text-[2.2rem] font-display font-semibold text-[#324b4c] leading-none mb-6">
+            Why Comparing Treks Matters ?
           </h2>
         </div>
 

@@ -59,7 +59,7 @@ const FAQ = () => {
             <HelpCircle size={18} />
             Got Questions?
           </span> }
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 mb-4 tracking-tight">
+          <h2 className="text-[2.2rem] font-display font-semibold text-[#324b4c] leading-none mb-4 tracking-tight">
             Frequently Asked Questions
           </h2>
           <p className="text-slate-500 text-lg font-sans">
