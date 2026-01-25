@@ -101,7 +101,7 @@ function App() {
 
         {/* Hero Heading */}
         {/* Hero Heading */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-4 leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4 leading-tight">
           Compare Treks. <span className="text-[#4FD1C5]">Choose</span><br />
           <span className="text-[#4FD1C5]">Smarter.</span><br />
           Trek Confidently.
@@ -171,7 +171,7 @@ function App() {
 
             <a href="#how-it-works" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>How It Works</a>
             <a href="#compare-section" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Compare</a>
-            <a href="#trek-genie-section" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>TrekGenie</a>
+            <a href="#" className="text-2xl font-bold font-display text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>TrekGenie</a>
             <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>FAQ</a>
             <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Destinations</a>
             <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Blog</a>

@@ -62,9 +62,6 @@ const InspirationSection = () => {
                       <p className="text-[#697488] text-[15px] leading-relaxed">
                          {post.description}
                       </p>
-                      <span className="text-[#4FD1C5] text-[15px] font-medium mt-2 cursor-pointer hover:underline">
-                         Show more &gt;
-                      </span>
                    </div>
                 </a>
              ))}

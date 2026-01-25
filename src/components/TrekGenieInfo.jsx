@@ -6,23 +6,17 @@ const TrekGenieInfo = () => {
   const [userText, setUserText] = useState('');
   const [aiState, setAiState] = useState('idle'); // 'idle' | 'thinking' | 'responding'
   const [visibleCards, setVisibleCards] = useState(0);
-  const [showUserMessage, setShowUserMessage] = useState(false);
-
+  
   const sectionRef = useRef(null);
   const fullUserText = "I'm a beginner looking for a 4-5 day trek in March. Any suggestions?";
 
-  // 1. Turn on/off trigger based on visibility
+  // 1. trigger animation on scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setHasTriggered(true);
-        } else {
-          setHasTriggered(false);
-          setAiState('idle');
-          setVisibleCards(0);
-          setShowUserMessage(false);
-          setUserText('');
+          observer.disconnect();
         }
       },
       { threshold: 0.4 } // 40% visibility triggers it
@@ -39,46 +33,41 @@ const TrekGenieInfo = () => {
   useEffect(() => {
     if (!hasTriggered) return;
 
-    // Store timeout IDs for cleanup
-    let t1, t2, t3, t4, t5, t6;
+    let currentIndex = 0;
+    
+    // Typing effect
+    const typingInterval = setInterval(() => {
+      if (currentIndex < fullUserText.length) {
+        setUserText(fullUserText.slice(0, currentIndex + 1));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        
+        // Typing done, Start Thinking
+        // Small delay before thinking starts strictly
+        setTimeout(() => {
+           setAiState('thinking');
+           
+           // Thinking Duration -> Reveal Answer
+           setTimeout(() => {
+             setAiState('responding');
 
-    // Show User Message immediately with animation
-    t1 = setTimeout(() => {
-        setShowUserMessage(true);
-        setUserText(fullUserText);
+             // Stagger Cards
+             setTimeout(() => setVisibleCards(1), 400); // Card 1
+             setTimeout(() => setVisibleCards(2), 550); // Card 2
+             setTimeout(() => setVisibleCards(3), 700); // Card 3
 
-        // Start Thinking after message is shown
-        t2 = setTimeout(() => {
-          setAiState('thinking');
+           }, 1200); // 1.2s thinking
+        }, 300);
+      }
+    }, 40); // ~40ms per key
 
-          // Thinking Duration -> Reveal Answer
-          t3 = setTimeout(() => {
-            setAiState('responding');
-
-            // Stagger Cards
-            t4 = setTimeout(() => setVisibleCards(1), 400); // Card 1
-            t5 = setTimeout(() => setVisibleCards(2), 550); // Card 2
-            t6 = setTimeout(() => setVisibleCards(3), 700); // Card 3
-
-          }, 1200); // 1.2s thinking
-        }, 800);
-    }, 100);
-
-    // Cleanup function to cancel active timers if user scrolls away
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
-      clearTimeout(t4);
-      clearTimeout(t5);
-      clearTimeout(t6);
-    };
-
+    return () => clearInterval(typingInterval);
   }, [hasTriggered, fullUserText]);
 
   return (
-    <section
-      id="trek-genie-section"
+    <section 
+      id="trek-genie-section" 
       ref={sectionRef}
       className="py-24 bg-white relative overflow-hidden"
     >
@@ -96,7 +85,7 @@ const TrekGenieInfo = () => {
               <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse ml-1"></span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-slate-900 mb-6 leading-tight">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-display font-bold text-slate-900 mb-6 leading-tight">
               Not Sure What to <br />
               <span className="text-[#2DD4BF]">Compare?</span>
             </h2>
@@ -105,7 +94,7 @@ const TrekGenieInfo = () => {
               TrekGenie is your personal AI trekking assistant. Just tell it your fitness level, preferred season, and travel goals — and it'll suggest the perfect treks for you to compare.
             </p>
 
-            <div className="text-md md:text-lg space-y-6 mb-12">
+            <div className="text-sm md:text-md space-y-6 mb-12">
               {[
                 "Personalized trek recommendations",
                 "Based on your fitness & experience",
@@ -121,7 +110,7 @@ const TrekGenieInfo = () => {
               ))}
             </div>
 
-            <a
+            <a 
               href="https://scoutripper.com/trekgenie/"
               target="_blank"
               rel="noopener noreferrer"
@@ -135,7 +124,7 @@ const TrekGenieInfo = () => {
 
           {/* UI Mockup Side */}
           <div className="lg:w-1/2 w-full flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[575px] h-[565px]">
+            <div className="relative w-full max-w-[576px] h-[568px]">
 
               {/* Messages Container */}
               <div className="bg-white rounded-[32px] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] border border-slate-100 p-6 md:p-8 h-full flex flex-col relative z-10 overflow-hidden">
@@ -161,51 +150,54 @@ const TrekGenieInfo = () => {
                 <div className="flex-grow flex flex-col justify-center min-h-0 pt-8 pb-4 space-y-8">
 
                   {/* User Msg */}
-                  <div className="flex justify-end mt-5 min-h-[60px]"> {/* min-h prevents layout jumping */}
-                    <div className={`bg-[#4AC9C5] text-white pt-2 pr-2 pb-2 pl-2 rounded-2xl rounded-br-sm max-w-md text-[15px] font-small leading-relaxed shadow-sm transition-all duration-700 ease-out transform ${showUserMessage ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                  <div className="flex justify-end mt-10 min-h-[60px]"> {/* min-h prevents layout jumping */}
+                    <div className="bg-[#4AC9C5] text-white pt-4 pb-4 rounded-2xl rounded-br-sm max-w-md text-[15px] font-small leading-relaxed shadow-sm transition-all duration-200">
                       {userText}
+                      {/* Cursor blink effect while typing */}
+                      {hasTriggered && userText.length < fullUserText.length && (
+                        <span className="inline-block w-0.5 h-4 bg-white/70 ml-0.5 animate-pulse align-middle"></span>
+                      )}
                     </div>
                   </div>
 
                   {/* AI Msg Wrapper */}
-                  <div className="flex justify-start w-fit min-h-[120px]">
+                  <div className="flex justify-start w-full min-h-[120px]">
                     {/* 1. THINKING STATE */}
                     {aiState === 'thinking' && (
-                      <div className="bg-[#F8FAFC] text-slate-500 px-2 py-2 rounded-2xl rounded-tl-sm text-[14px] font-medium border border-slate-50 animate-pulse flex items-center gap-3">
-                        <div className="flex gap-1">
-                          <div className="w-3 h-3 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.32s]"></div>
-                          <div className="w-3 h-3 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.16s]"></div>
-                          <div className="w-3 h-3 bg-slate-400 rounded-full animate-bounce"></div>
+                        <div className="bg-[#F8FAFC] text-slate-500 px-5 py-4 rounded-2xl rounded-tl-sm text-[14px] font-medium border border-slate-50 animate-pulse flex items-center gap-3">
+                           <div className="flex gap-1">
+                             <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.32s]"></div>
+                             <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.16s]"></div>
+                             <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></div>
+                           </div>
+                           <span>TrekGenie is thinking...</span>
                         </div>
-                        <span>TrekGenie is thinking...</span>
-                      </div>
                     )}
 
                     {/* 2. RESPONSE STATE */}
                     {aiState === 'responding' && (
-                      <div className={`bg-[#F8FAFC] pt-2 pr-4 pb-4 pl-4 text-slate-600 rounded-2xl rounded-tl-sm w-full lg:text-[15px] md:text-[12px] text-[10px] font-medium leading-relaxed border border-slate-50 transition-all duration-700 ease-out transform ${aiState === 'responding' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                        <div className={`bg-[#F8FAFC] text-slate-600 p-4 rounded-2xl rounded-tl-sm w-full lg:text-[15px] md:text-[12px] text-[10px] font-medium leading-relaxed border border-slate-50 transition-all duration-700 ease-out transform ${aiState === 'responding' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                         <p className="mb-2 font-sans text-slate-700">Great choice! Based on your criteria, I recommend comparing these treks:</p>
 
                         <div className="space-y-1">
-
+                          
                           {/* Trek 1 */}
-                          <div className={`bg-white py-1 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-default transition-all duration-500 ease-out hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                            <span className="w-5 h-5 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text-xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">1</span>
-                            <span className="w-fit font-bold text-slate-700 font-sans lg:text-[16px] md:text-[12px] text-[10px] group-hover:text-teal-700 transition-colors">Kedarkantha</span>
+                          <div className={`bg-white py-2 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-default transition-all duration-500 ease-out hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                            <span className="w-7 h-7 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text-xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">1</span>
+                            <span className="font-bold text-slate-700 font-sans lg:text-[16px] md:text-[12px] text-[10px] group-hover:text-teal-700 transition-colors">Kedarkantha</span>
                           </div>
-
+                          
                           {/* Trek 2 */}
-                          <div className={`bg-white py-1 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-default transition-all duration-500 ease-out delay-100 hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                            <span className="w-5 h-5 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text -xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">2</span>
-                            <span className="w-fit font-bold text-slate-700 font-sans lg:text-[16px] md:text-[12px] text-[10px] group-hover:text-teal-700 transition-colors">Brahmatal</span>
+                          <div className={`bg-white py-2 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-default transition-all duration-500 ease-out delay-100 hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                            <span className="w-7 h-7 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text -xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">2</span>
+                            <span className="font-bold text-slate-700 font-sans lg:text-[16px] md:text-[12px] text-[10px] group-hover:text-teal-700 transition-colors">Brahmatal</span>
                           </div>
-
+                          
                           {/* Trek 3 */}
-                          <div className={`bg-white py-1 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-default transition-all duration-500 ease-out delay-100 hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                            <span className="w-5 h-5 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text -xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">2</span>
-                            <span className="w-fit font-bold text-slate-700 font-sans lg:text-[16px] md:text-[12px] text-[10px] group-hover:text-teal-700 transition-colors">Kuari Pass</span>
+                          <div className={`bg-white py-2 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-default transition-all duration-500 ease-out delay-200 hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                            <span className="w-7 h-7 rounded-full bg-teal-50 text-teal-600 text-sm font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">3</span>
+                            <span className="font-bold text-slate-700 font-sans text-[16px] group-hover:text-teal-700 transition-colors">Kuari Pass</span>
                           </div>
-
 
                         </div>
                       </div>
