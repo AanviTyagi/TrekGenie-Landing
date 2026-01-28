@@ -15,12 +15,11 @@ const TrekGenieInfo = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setHasTriggered(true);
-          observer.disconnect();
-        }
+        // Toggle hasTriggered based on whether the section is in view
+        // This resets the animation when scrolling away and restarts it when scrolling back
+        setHasTriggered(entry.isIntersecting);
       },
-      { threshold: 0.4 } // 40% visibility triggers it
+      { threshold: 0.2 } // Trigger when 20% visible for better responsiveness
     );
 
     if (sectionRef.current) {
@@ -167,12 +166,12 @@ const TrekGenieInfo = () => {
                 </div>
 
                 {/* Chat Area */}
-                <div className="flex-grow flex flex-col justify-center min-h-0 pt-8 pb-4 space-y-8">
+                <div className="flex-grow flex flex-col justify-start pt-4 pb-4 space-y-6 overflow-y-auto custom-scrollbar pr-1">
 
                   {/* User Msg */}
                   {showUserMessage && (
-                    <div className="flex justify-end mt-10 min-h-[60px]"> {/* min-h prevents layout jumping */}
-                      <div className="bg-[#4AC9C5] text-white pt-4 pb-4 rounded-2xl rounded-br-sm max-w-md text-[15px] font-small leading-relaxed shadow-sm transition-all duration-200">
+                    <div className="flex justify-end mt-4">
+                      <div className="bg-[#4AC9C5] text-white py-4 px-6 rounded-2xl rounded-br-sm max-w-[88%] text-[15px] font-medium leading-relaxed shadow-sm transition-all duration-300">
                         {userText}
                         {/* Cursor blink effect while typing */}
                         {hasTriggered && userText.length < fullUserText.length && (
@@ -182,61 +181,54 @@ const TrekGenieInfo = () => {
                     </div>
                   )}
 
-                  {/* AI Msg Wrapper */}
-                  <div className="flex justify-start w-full min-h-[120px]">
-                    {/* 1. THINKING STATE */}
-                    {aiState === 'thinking' && (
-                      <div className="bg-[#F8FAFC] text-slate-500 pt-2 pr-4 pb-2 pl-4 rounded-2xl rounded-tl-sm text-[15px] font-medium border border-slate-50 animate-pulse flex items-center gap-3 shadow-sm">
-                        <div className="flex gap-1.5">
-                          <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.32s]"></div>
-                          <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.16s]"></div>
-                          <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
-                        </div>
-                        <span className="font-sans">TrekGenie is thinking...</span>
-                      </div>
-                    )}
+                  {/* AI Msg Wrapper (Stable Container) */}
+                  <div className="flex justify-start w-full transition-all duration-500">
+                    {(aiState === 'thinking' || aiState === 'responding') && (
+                      <div className="bg-[#F8FAFC] w-full p-5 rounded-2xl rounded-tl-sm border border-slate-50 shadow-sm min-h-[100px] flex flex-col justify-center transition-all duration-500 ease-out">
+                        
+                        {/* 1. THINKING CONTENT */}
+                        {aiState === 'thinking' && (
+                          <div className="flex items-center gap-3 animate-pulse">
+                            <div className="flex gap-1.5">
+                              <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce [animation-delay:-0.32s]"></div>
+                              <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce [animation-delay:-0.16s]"></div>
+                              <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce"></div>
+                            </div>
+                            <span className="font-sans text-teal-600 font-medium">TrekGenie is thinking...</span>
+                          </div>
+                        )}
 
-                    {/* 2. RESPONSE STATE */}
-                    {aiState === 'responding' && (
-                      <div className={`bg-[#F8FAFC] pt-2 pr-4 pb-6 pl-4 text-slate-600 rounded-2xl rounded-tl-sm w-full lg:text-[15px] md:text-[12px] text-[10px] font-medium leading-relaxed border border-slate-50 transition-all duration-700 ease-out transform ${aiState === 'responding' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                        <p className="mb-2 text-slate-700">Great choice! Based on your criteria, I recommend comparing these treks:</p>
+                        {/* 2. RESPONSE CONTENT */}
+                        {aiState === 'responding' && (
+                          <div className="transition-all duration-700 ease-out animate-in fade-in slide-in-from-bottom-2">
+                            <p className="mb-4 text-slate-700 font-medium lg:text-[15px] md:text-[13px] text-[12px]">
+                              Great choice! Based on your criteria, I recommend comparing these treks:
+                            </p>
 
-                        <div className="space-y-1">
-                          
-                          {/* Trek 1 */}
-                          <a 
-                            href="https://scoutripper.com/trekgenie/" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className={`bg-white py-1 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-pointer transition-all duration-500 ease-out hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-                          >
-                            <span className="w-5 h-5 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text-xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">1</span>
-                            <span className="w-fit font-bold text-slate-700 lg:text-[16px] md:text-[12px] text-[10px] group-hover:text-teal-700 transition-colors">Kedarkantha</span>
-                          </a>
-
-                          {/* Trek 2 */}
-                          <a 
-                            href="https://scoutripper.com/trekgenie/" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className={`bg-white py-1 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-pointer transition-all duration-500 ease-out delay-100 hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-                          >
-                            <span className="w-5 h-5 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text-xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">2</span>
-                            <span className="w-fit font-bold text-slate-700 lg:text-[16px] md:text-[12px] text-[10px] group-hover:text-teal-700 transition-colors">Brahmatal</span>
-                          </a>
-
-                          {/* Trek 3 */}
-                          <a 
-                            href="https://scoutripper.com/trekgenie/" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className={`bg-white py-1 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-pointer transition-all duration-500 ease-out delay-200 hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-                          >
-                            <span className="w-5 h-5 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text-xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">3</span>
-                            <span className="w-fit font-bold text-slate-700 lg:text-[16px] md:text-[12px] text-[10px] group-hover:text-teal-700 transition-colors">Kuari Pass</span>
-                          </a>
-
-                        </div>
+                            <div className="space-y-2.5">
+                              {[
+                                { id: 1, name: "Kedarkantha", delay: "delay-0" },
+                                { id: 2, name: "Brahmatal", delay: "delay-100" },
+                                { id: 3, name: "Kuari Pass", delay: "delay-200" }
+                              ].map((trek, idx) => (
+                                <a 
+                                  key={trek.id}
+                                  href="https://scoutripper.com/trekgenie/" 
+                                  target="_blank" 
+                                  rel="noopener noreferrer" 
+                                  className={`bg-white py-2.5 px-4 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-pointer transition-all duration-500 ease-out transform ${visibleCards >= trek.id ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'} ${trek.delay} hover:shadow-md hover:border-teal-100 hover:scale-[1.02]`}
+                                >
+                                  <span className="w-6 h-6 rounded-full bg-teal-50 text-teal-600 text-xs font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">
+                                    {trek.id}
+                                  </span>
+                                  <span className="w-fit font-bold text-slate-700 group-hover:text-teal-700 transition-colors">
+                                    {trek.name}
+                                  </span>
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
