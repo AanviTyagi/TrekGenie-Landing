@@ -36,7 +36,7 @@ const ReadyToChoose = () => {
               href="https://scoutripper.com/compare-treks/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-auto h-14 px-8 rounded-lg bg-gradient-to-r from-teal-400 to-cyan-400 hover:from-teal-500 hover:to-cyan-500 text-white font-bold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-teal-500/20"
+              className="w-full sm:w-auto h-14 px-8 rounded-lg bg-gradient-to-r from-teal-400 to-cyan-400 hover:from-teal-500 hover:to-cyan-500 text-white font-bold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-teal-500/20"
             >
                 Start Comparing Now
                 <ArrowRight size={20} />

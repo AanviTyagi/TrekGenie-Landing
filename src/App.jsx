@@ -64,7 +64,7 @@ function App() {
           </div>
 
           <div className="flex items-center gap-4">
-            <a href="https://scoutripper.com/compare-treks/" target="_blank" rel="noopener noreferrer" className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-lg border backdrop-blur-sm transition-all text-sm font-medium
+            <a href="https://scoutripper.com/compare-treks/" target="_blank" rel="noopener noreferrer" className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm transition-all text-sm font-medium
                ${isScrolled
                 ? 'border-teal-500 text-teal-600 bg-teal-50/50'
                 : 'border-white/30 text-white bg-white/5 hover:bg-white/10'
@@ -88,7 +88,7 @@ function App() {
       </nav>
 
       {/* Main Content */}
-      <main className="relative z-10 flex flex-col items-center justify-center h-screen pt-28 px-4 text-center">
+      <main className="relative z-10 flex flex-col items-center justify-center min-h-screen pt-40 pb-20 px-4 text-center">
 
         {/* Badge */}
         <div className="mb-8 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1e293b]/80 border border-teal-500/20 backdrop-blur-md text-sm font-semibold text-white shadow-xl">
@@ -126,20 +126,20 @@ function App() {
           </div>
 
           {/* Floating Pills / Quick Links */}
-          <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up">
+          <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up pb-8">
             <div className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1e293b]/60 border border-slate-700/50 hover:border-slate-500 backdrop-blur-md cursor-default transition-all hover:bg-[#1e293b]/80">
               <Mountain size={16} className="text-teal-400 group-hover:text-[#4FD1C5] transition-colors" />
-              <span className="text-sm font-medium text-slate-200 group-hover:text-white">Kedarkantha</span>
+              <span className="text-sm font-bold text-slate-200 group-hover:text-white">Kedarkantha</span>
             </div>
 
             <div className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1e293b]/60 border border-slate-700/50 hover:border-slate-500 backdrop-blur-md cursor-default transition-all hover:bg-[#1e293b]/80">
               <Mountain size={16} className="text-teal-400 group-hover:text-[#4FD1C5] transition-colors" />
-              <span className="text-sm font-medium text-slate-200 group-hover:text-white">Hampta Pass</span>
+              <span className="text-sm font-bold text-slate-200 group-hover:text-white">Hampta Pass</span>
             </div>
 
             <div className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1e293b]/60 border border-slate-700/50 hover:border-slate-500 backdrop-blur-md cursor-default transition-all hover:bg-[#1e293b]/80">
               <Mountain size={16} className="text-teal-400 group-hover:text-[#4FD1C5] transition-colors" />
-              <span className="text-sm font-medium text-gray-300 group-hover:text-white">Roopkund</span>
+              <span className="text-sm font-bold text-slate-200 group-hover:text-white">Roopkund</span>
             </div>
           </div>
 
@@ -167,19 +167,18 @@ function App() {
             <X size={24} />
           </button>
 
-          <a href="#how-it-works" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>How It Works</a>
-          <a href="#compare-section" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Compare</a>
-          <a href="#" className="text-2xl font-bold font-display text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>TrekGenie</a>
-          <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>FAQ</a>
-          <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Destinations</a>
-          <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Blog</a>
+          <button onClick={() => { document.getElementById('how-it-works').scrollIntoView({ behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="text-2xl font-medium text-gray-300 hover:text-white transition-colors">How It Works</button>
+          <button onClick={() => { document.getElementById('compare-section').scrollIntoView({ behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="text-2xl font-medium text-gray-300 hover:text-white transition-colors">Compare</button>
+          <button onClick={() => { document.getElementById('trek-genie-section').scrollIntoView({ behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="text-2xl font-medium text-gray-300 hover:text-white transition-colors">TrekGenie</button>
+          <button onClick={() => { document.getElementById('faq-section').scrollIntoView({ behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="text-2xl font-medium text-gray-300 hover:text-white transition-colors">FAQ</button>
+          <a href="https://scoutripper.com/blog/" target="_blank" rel="noopener noreferrer" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Blog</a>
 
           <a
             href="https://scoutripper.com/compare-treks/"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-600 bg-white/5 hover:bg-white/10 transition-colors text-sm font-medium mt-4 text-gray-300"
+            className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-600 bg-white/5 hover:bg-white/10 transition-colors text-sm font-medium mt-4 text-gray-300"
           >
             <Search size={16} />
             <span>Compare</span>
