@@ -48,13 +48,13 @@ const CompareFeatures = () => {
         
         {/* Section Header */}
         <div className="text-center mb-20">
-          <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#E0F7FA] text-[#38B2AC] text-[16px] font-bold tracking-normal mb-8">
+          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#4ec5c1]/10 text-[#4ec5c1] text-sm font-bold mb-8">
             Comprehensive Data
           </span>
-          <h2 className="text-[2.2rem] font-display font-semibold text-[#324b4c] leading-none mb-6">
+          <h2 className="text-[2.2rem] font-semibold text-[#324b4c] leading-none mb-6">
             What You Can Compare ?
           </h2>
-          <p className="text-slate-500 text-lg max-w-2xl mx-auto font-sans">
+          <p className="text-slate-500 text-lg max-w-2xl mx-auto">
             Everything you need to make an informed decision, all in one place
           </p>
         </div>
@@ -66,10 +66,10 @@ const CompareFeatures = () => {
               <div className={`w-12 h-12 rounded-full ${feature.color} text-white flex items-center justify-center mb-6 shadow-lg shadow-gray-200`}>
                 {feature.icon}
               </div>
-              <h3 className="text-[1.1rem] font-display font-medium text-slate-900 mb-3">
+              <h3 className="text-[1.1rem] font-medium text-slate-900 mb-3">
                 {feature.title}
               </h3>
-              <p className="text-slate-500 text-sm leading-relaxed font-sans">
+              <p className="text-slate-500 text-sm leading-relaxed">
                 {feature.desc}
               </p>
             </div>
@@ -82,7 +82,7 @@ const CompareFeatures = () => {
             href="https://scoutripper.com/compare-treks/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="h-14 px-10 rounded-2xl bg-gradient-to-r from-teal-400 to-cyan-400 hover:from-teal-500 hover:to-cyan-500 text-white font-bold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-xl shadow-teal-500/20"
+            className="h-14 px-10 rounded-lg bg-gradient-to-r from-teal-400 to-cyan-400 hover:from-teal-500 hover:to-cyan-500 text-white font-bold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-xl shadow-teal-500/20"
           >
             Start Comparing Now
             <ArrowRight size={18} />

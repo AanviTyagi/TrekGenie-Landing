@@ -8,11 +8,11 @@ const WhyCompare = () => {
         
         {/* Section Header */}
         <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#E0F7FA] text-[#38B2AC] text-[16px] font-bold tracking-normal mb-8">
+          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#4ec5c1]/10 text-[#4ec5c1] text-sm font-bold mb-8">
             <BookOpen size={18} />
             Expert Insight
           </span>
-          <h2 className="text-[2.2rem] font-display font-semibold text-[#324b4c] leading-none mb-6">
+          <h2 className="text-[2.2rem] font-semibold text-[#324b4c] leading-none mb-6">
             Why Comparing Treks Matters ?
           </h2>
         </div>
@@ -28,10 +28,10 @@ const WhyCompare = () => {
                     </div>
                 </div>
                 <div>
-                   <h3 className="text-[1.1rem] font-medium text-slate-900 mb-3 font-display">
+                   <h3 className="text-[1.1rem] font-medium text-slate-900 mb-3">
                         Same Trek Name, Different Experiences
                    </h3>
-                   <p className="text-slate-500 leading-relaxed font-sans text-lg">
+                   <p className="text-slate-500 leading-relaxed text-lg">
                         Did you know that "Kedarkantha Trek" offered by two different organizers can vary dramatically? 
                         One might be a 4-day beginner-friendly experience, while another could be a challenging 6-day 
                         expedition with summit camping.
@@ -40,15 +40,15 @@ const WhyCompare = () => {
             </div>
 
             {/* List Points */}
-            <div className="space-y-6 md:pl-[4.25rem] text-slate-600 leading-relaxed font-sans text-lg">
+            <div className="space-y-6 md:pl-[4.25rem] text-slate-600 leading-relaxed text-lg">
                 <p>
-                    <span className="font-md text-slate-900 font-display">The problem with guessing:</span> Most trekkers rely on Instagram reels, random blogs, or word-of-mouth to choose their treks. This often leads to mismatched expectations — picking a trek that's too hard, too easy, or doesn't fit their schedule and budget.
+                    <span className="font-md text-slate-900">The problem with guessing:</span> Most trekkers rely on Instagram reels, random blogs, or word-of-mouth to choose their treks. This often leads to mismatched expectations — picking a trek that's too hard, too easy, or doesn't fit their schedule and budget.
                 </p>
                 <p>
-                    <span className="font-md text-slate-900 font-display">Hidden costs are real:</span> Many organizers advertise low base prices but add charges for gear rental, transport, or permits. Without comparison, you might end up paying 30-40% more than expected.
+                    <span className="font-md text-slate-900">Hidden costs are real:</span> Many organizers advertise low base prices but add charges for gear rental, transport, or permits. Without comparison, you might end up paying 30-40% more than expected.
                 </p>
                 <p>
-                    <span className="font-md text-slate-900 font-display">Experience matters:</span> The quality of trek leaders, group size, safety protocols, and campsite facilities can make or break your adventure. These details are rarely visible upfront.
+                    <span className="font-md text-slate-900">Experience matters:</span> The quality of trek leaders, group size, safety protocols, and campsite facilities can make or break your adventure. These details are rarely visible upfront.
                 </p>
             </div>
 
@@ -57,7 +57,7 @@ const WhyCompare = () => {
 
              {/* Footer Statement */}
              <div className="md:pl-[4.25rem]">
-                <p className="text-xl font-medium font-sans leading-relaxed text-slate-800">
+                <p className="text-xl font-medium leading-relaxed text-slate-800">
                     <span className="text-teal-500 font-bold">Scoutripper's Compare Tool</span> gives you the clarity you need — so you can focus on the adventure, not the anxiety.
                 </p>
              </div>

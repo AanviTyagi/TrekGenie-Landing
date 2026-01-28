@@ -1,5 +1,5 @@
 import React from 'react';
-import { MousePointerClick, BarChart3, CheckCircle2 } from 'lucide-react';
+import { MousePointerClick, BarChart3, CheckCircle2, ArrowRight } from 'lucide-react';
 
 const HowItWorks = () => {
   return (
@@ -8,10 +8,10 @@ const HowItWorks = () => {
         
         {/* Section Header */}
         <div className="text-center mb-28">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-[#324b4c] mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#324b4c] mb-6">
             How does it work?
           </h2>
-          <p className="text-slate-500 text-xl font-sans">
+          <p className="text-slate-500 text-xl">
             Three simple steps to find your perfect trek
           </p>
         </div>
@@ -32,11 +32,11 @@ const HowItWorks = () => {
               </div>
             </div>
             
-            <h3 className="text-2xl font-display font-bold text-[#324b4c] mb-5">
+            <h3 className="text-2xl font-bold text-[#324b4c] mb-5">
               Select Treks
             </h3>
             <div className="max-w-[240px]">
-              <p className="text-slate-500 text-center leading-relaxed font-sans text-[16px]">
+              <p className="text-slate-500 text-center leading-relaxed text-[16px]">
                 Choose any treks or destinations you're interested in exploring from our vast database.
               </p>
             </div>
@@ -45,14 +45,14 @@ const HowItWorks = () => {
             <div className="hidden md:block absolute top-[60px] -right-[60%] w-[120%] z-0 pointer-events-none transform -translate-y-1/2">
               <svg className="w-full h-24" viewBox="0 0 200 60" preserveAspectRatio="none">
                 <path 
-                  d="M40,50 Q100,10 160,40" 
+                  d="M30,40 Q100,0 160,40" 
                   fill="none" 
                   stroke="#4FD1C5" 
                   strokeWidth="2.5" 
                   strokeDasharray="6 6" 
                   strokeLinecap="round"
                 />
-                <path d="M155 35 L162 40 L155 45" fill="none" stroke="#4FD1C5" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M162 34 L170 40 L162 46" fill="none" stroke="#4FD1C5" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
           </div>
@@ -69,11 +69,11 @@ const HowItWorks = () => {
                 02
               </div>
             </div>
-            <h3 className="text-2xl font-display font-bold text-[#324b4c] mb-5">
+            <h3 className="text-2xl font-bold text-[#324b4c] mb-5">
               Compare Details
             </h3>
             <div className="max-w-[240px]">
-              <p className="text-slate-500 text-center leading-relaxed font-sans text-[16px]">
+              <p className="text-slate-500 text-center leading-relaxed text-[16px]">
                 See difficulty, duration, cost & inclusions side-by-side to make the best choice.
               </p>
             </div>
@@ -82,14 +82,14 @@ const HowItWorks = () => {
             <div className="hidden md:block absolute top-[60px] -right-[60%] w-[120%] z-0 pointer-events-none transform -translate-y-1/2">
                <svg className="w-full h-24" viewBox="0 0 200 60" preserveAspectRatio="none">
                 <path 
-                  d="M40,50 Q100,10 160,40" 
+                  d="M30,40 Q100,0 160,40" 
                   fill="none" 
                   stroke="#4FD1C5" 
                   strokeWidth="2.5" 
                   strokeDasharray="6 6" 
                   strokeLinecap="round"
                 />
-                <path d="M155 35 L162 40 L155 45" fill="none" stroke="#4FD1C5" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M162 34 L170 40 L162 46" fill="none" stroke="#4FD1C5" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
           </div>
@@ -106,17 +106,31 @@ const HowItWorks = () => {
                 03
               </div>
             </div>
-            <h3 className="text-2xl font-display font-bold text-[#324b4c] mb-5">
+            <h3 className="text-2xl font-bold text-[#324b4c] mb-5">
               Choose Confidently
             </h3>
             <div className="max-w-[240px]">
-              <p className="text-slate-500 text-center leading-relaxed font-sans text-[16px]">
+              <p className="text-slate-500 text-center leading-relaxed text-[16px]">
                 Pick the trek that fits your fitness level, budget, and adventure goals perfectly.
               </p>
             </div>
           </div>
 
         </div>
+
+        {/* CTA Button */}
+        <div className="flex justify-center mt-20">
+          <a 
+            href="https://scoutripper.com/trekgenie/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="h-14 px-10 rounded-lg bg-gradient-to-r from-teal-400 to-cyan-400 hover:from-teal-500 hover:to-cyan-500 text-white font-bold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-xl shadow-teal-500/20"
+          >
+            Compare Trek
+            <ArrowRight size={18} />
+          </a>
+        </div>
+
       </div>
     </section>
   );

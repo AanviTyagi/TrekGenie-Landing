@@ -55,14 +55,14 @@ const FAQ = () => {
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          { <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#E0F7FA] text-[#38B2AC] text-[16px] font-bold tracking-normal mb-8">
+          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#4ec5c1]/10 text-[#4ec5c1] text-sm font-bold mb-8">
             <HelpCircle size={18} />
             Got Questions?
-          </span> }
-          <h2 className="text-[2.2rem] font-display font-semibold text-[#324b4c] leading-none mb-4 tracking-tight">
+          </span>
+          <h2 className="text-[2.2rem] font-semibold text-[#324b4c] leading-none mb-4 tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-slate-500 text-lg font-sans">
+          <p className="text-slate-500 text-lg">
             Everything you need to know about Scoutripper and comparing treks
           </p>
         </div>
@@ -82,7 +82,7 @@ const FAQ = () => {
                         onClick={() => toggleFAQ(index)}
                         className="w-full flex items-center justify-between p-6 md:px-8 text-left focus:outline-none group"
                     >
-                        <span className="text-[1.1rem] font-medium font-display text-slate-900 pr-8">
+                        <span className="text-[1.1rem] font-medium text-slate-900 pr-8">
                             {item.question}
                         </span>
                         <div className={`flex-shrink-0 transition-transform duration-300 ${openIndex === index ? 'rotate-180 text-[#4FD1C5]' : 'text-slate-400 group-hover:text-teal-500'}`}>
@@ -93,7 +93,7 @@ const FAQ = () => {
                     <div 
                         className={`transition-all duration-300 ease-in-out ${openIndex === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}
                     >
-                        <div className="px-6 md:px-8 pb-6 text-slate-500 font-sans leading-relaxed text-[14px] pt-0">
+                        <div className="px-6 md:px-8 pb-6 text-slate-500 leading-relaxed text-[14px] pt-0">
                             {item.answer}
                         </div>
                     </div>
@@ -118,7 +118,7 @@ const FAQ = () => {
                     <h4 className="text-slate-900 font-bold text-sm mb-1">Frequently Asked Questions</h4>
                     <p className="text-slate-500 text-sm">We would be happy to help you with whatever questions you have.</p>
                   </div>
-                  <button className="px-6 py-2.5 rounded-xl bg-[#4FD1C5] hover:bg-teal-500 text-white font-bold text-sm flex items-center gap-2 transition-colors shadow-lg shadow-teal-500/20 whitespace-nowrap">
+                  <button className="px-6 py-2.5 rounded-lg bg-[#4FD1C5] hover:bg-teal-500 text-white font-bold text-sm flex items-center gap-2 transition-colors shadow-lg shadow-teal-500/20 whitespace-nowrap">
                     Ask us Anything
                     <span className="text-lg">→</span>
                   </button>
