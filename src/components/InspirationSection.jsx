@@ -55,13 +55,16 @@ const InspirationSection = () => {
                    
                    {/* Content */}
                    <div className="flex flex-col pt-2">
-                      <span className="text-[14px] text-gray-500 mb-2">{post.date}</span>
-                      <h3 className="text-[20px] font-bold text-[#1A2B48] mb-3 group-hover:text-teal-600 transition-colors leading-tight">
+                      <span className="text-[14px] text-gray-500 mb-2 font-sans">{post.date}</span>
+                      <h3 className="text-[20px] font-bold text-[#4ec5c1] mb-2 font-sans leading-tight">
                         {post.title} · Scoutripper
                       </h3>
-                      <p className="text-[#697488] text-[15px] leading-relaxed">
+                      <p className="text-[#697488] text-[15px] leading-relaxed font-sans">
                          {post.description}
                       </p>
+                      <span className="text-[#4ec5c1] text-[15px] font-bold mt-2 hover:underline inline-flex items-center font-sans">
+                        Show more &gt;
+                      </span>
                    </div>
                 </a>
              ))}
