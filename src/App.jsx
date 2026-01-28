@@ -29,31 +29,30 @@ function App() {
     <div className="min-h-screen relative overflow-hidden text-white">
       {/* Background Image with Overlay */}
       <div className="fixed inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80" 
-          alt="Mountains" 
+        <img
+          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80"
+          alt="Mountains"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-900/90"></div>
         <div className="absolute inset-0 bg-slate-900/40 mix-blend-multiply"></div>
       </div>
 
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-20 flex items-center ${
-        isScrolled 
-          ? 'bg-white shadow-sm border-b border-slate-100' 
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-20 flex items-center ${isScrolled
+          ? 'bg-white shadow-sm border-b border-slate-100'
           : 'bg-transparent'
-      }`}>
+        }`}>
         <div className="flex items-center justify-between max-w-[1320px] mx-auto w-full px-6">
           {/* Logo and Links Container */}
           <div className="flex items-center gap-12">
             <div className="flex-shrink-0 h-12 flex items-center">
-              <img 
-                src={isScrolled ? logoTeal : logo} 
-                alt="Scoutripper" 
-                className="h-10 md:h-12 w-auto object-contain transition-all duration-300 transform" 
+              <img
+                src={isScrolled ? logoTeal : logo}
+                alt="Scoutripper"
+                className="h-10 md:h-12 w-auto object-contain transition-all duration-300 transform"
               />
             </div>
-          
+
             {/* Desktop Navigation */}
             <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${isScrolled ? 'text-slate-900 border-transparent' : 'text-white'}`}>
               <button onClick={() => document.getElementById('how-it-works').scrollIntoView({ behavior: 'smooth' })} className="hover:text-teal-500 transition-colors">How It Works</button>
@@ -66,17 +65,17 @@ function App() {
 
           <div className="flex items-center gap-4">
             <a href="https://scoutripper.com/compare-treks/" target="_blank" rel="noopener noreferrer" className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-lg border backdrop-blur-sm transition-all text-sm font-medium
-               ${isScrolled 
-                  ? 'border-teal-500 text-teal-600 bg-teal-50/50' 
-                  : 'border-white/30 text-white bg-white/5 hover:bg-white/10'
-               }
+               ${isScrolled
+                ? 'border-teal-500 text-teal-600 bg-teal-50/50'
+                : 'border-white/30 text-white bg-white/5 hover:bg-white/10'
+              }
             `}>
               <Search size={16} />
               <span>Compare</span>
             </a>
-            
+
             {/* Mobile Menu Button */}
-            <button 
+            <button
               className={`md:hidden p-2 z-[60] relative hover:opacity-80 transition-colors
                 ${isScrolled ? 'text-teal-600' : 'text-white'}
               `}
@@ -90,7 +89,7 @@ function App() {
 
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-center justify-center h-screen pt-28 px-4 text-center">
-        
+
         {/* Badge */}
         <div className="mb-8 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1e293b]/80 border border-teal-500/20 backdrop-blur-md text-sm font-semibold text-white shadow-xl">
           <Mountain size={16} className="text-[#4FD1C5]" />
@@ -99,54 +98,50 @@ function App() {
         </div>
 
         {/* Hero Heading */}
-<<<<<<< Updated upstream
-        {/* Hero Heading */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4 leading-tight">
-=======
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 leading-tight">
->>>>>>> Stashed changes
-          Compare Treks. <span className="text-[#4FD1C5]">Choose</span><br />
-          <span className="text-[#4FD1C5]">Smarter.</span><br />
-          Trek Confidently.
-        </h1>
 
-        {/* Subheading */}
-        <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mb-8 leading-relaxed font-light">
-          Compare routes, difficulty, duration, cost & inclusions side-by-side.
-          Make informed decisions with transparent data from India's largest trekking community.
-        </p>
+            Compare Treks. <span className="text-[#4FD1C5]">Choose</span><br />
+            <span className="text-[#4FD1C5]">Smarter.</span><br />
+            Trek Confidently.
+          </h1>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center gap-5 mb-10 w-full sm:w-auto px-4 sm:px-0">
-          <button onClick={() => document.getElementById('compare-section').scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto h-14 px-8 rounded-lg bg-gradient-to-r from-teal-400 to-cyan-400 hover:from-teal-500 hover:to-cyan-500 text-white font-bold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-teal-500/20">
-            <Search size={20} />
-            Compare Treks
-            <ArrowRight size={20} />
-          </button>
-          
-          <button className="w-full sm:w-auto h-14 px-8 rounded-lg bg-white/10 hover:bg-white/20 border border-white text-white font-bold text-lg flex items-center justify-center gap-2 backdrop-blur-sm transition-all">
-            <Sparkles size={20} className="text-white" />
-            Ask TrekGenie
-          </button>
-        </div>
+          {/* Subheading */}
+          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mb-8 leading-relaxed font-light">
+            Compare routes, difficulty, duration, cost & inclusions side-by-side.
+            Make informed decisions with transparent data from India's largest trekking community.
+          </p>
 
-        {/* Floating Pills / Quick Links */}
-        <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up">
-          <div className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1e293b]/60 border border-slate-700/50 hover:border-slate-500 backdrop-blur-md cursor-default transition-all hover:bg-[#1e293b]/80">
-            <Mountain size={16} className="text-teal-400 group-hover:text-[#4FD1C5] transition-colors" />
-            <span className="text-sm font-medium text-slate-200 group-hover:text-white">Kedarkantha</span>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center gap-5 mb-10 w-full sm:w-auto px-4 sm:px-0">
+            <button onClick={() => document.getElementById('compare-section').scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto h-14 px-8 rounded-lg bg-gradient-to-r from-teal-400 to-cyan-400 hover:from-teal-500 hover:to-cyan-500 text-white font-bold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-teal-500/20">
+              <Search size={20} />
+              Compare Treks
+              <ArrowRight size={20} />
+            </button>
+
+            <button className="w-full sm:w-auto h-14 px-8 rounded-lg bg-white/10 hover:bg-white/20 border border-white text-white font-bold text-lg flex items-center justify-center gap-2 backdrop-blur-sm transition-all">
+              <Sparkles size={20} className="text-white" />
+              Ask TrekGenie
+            </button>
           </div>
-          
-          <div className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1e293b]/60 border border-slate-700/50 hover:border-slate-500 backdrop-blur-md cursor-default transition-all hover:bg-[#1e293b]/80">
-            <Mountain size={16} className="text-teal-400 group-hover:text-[#4FD1C5] transition-colors" />
-            <span className="text-sm font-medium text-slate-200 group-hover:text-white">Hampta Pass</span>
+
+          {/* Floating Pills / Quick Links */}
+          <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up">
+            <div className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1e293b]/60 border border-slate-700/50 hover:border-slate-500 backdrop-blur-md cursor-default transition-all hover:bg-[#1e293b]/80">
+              <Mountain size={16} className="text-teal-400 group-hover:text-[#4FD1C5] transition-colors" />
+              <span className="text-sm font-medium text-slate-200 group-hover:text-white">Kedarkantha</span>
+            </div>
+
+            <div className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1e293b]/60 border border-slate-700/50 hover:border-slate-500 backdrop-blur-md cursor-default transition-all hover:bg-[#1e293b]/80">
+              <Mountain size={16} className="text-teal-400 group-hover:text-[#4FD1C5] transition-colors" />
+              <span className="text-sm font-medium text-slate-200 group-hover:text-white">Hampta Pass</span>
+            </div>
+
+            <div className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1e293b]/60 border border-slate-700/50 hover:border-slate-500 backdrop-blur-md cursor-default transition-all hover:bg-[#1e293b]/80">
+              <Mountain size={16} className="text-teal-400 group-hover:text-[#4FD1C5] transition-colors" />
+              <span className="text-sm font-medium text-gray-300 group-hover:text-white">Roopkund</span>
+            </div>
           </div>
-          
-          <div className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1e293b]/60 border border-slate-700/50 hover:border-slate-500 backdrop-blur-md cursor-default transition-all hover:bg-[#1e293b]/80">
-            <Mountain size={16} className="text-teal-400 group-hover:text-[#4FD1C5] transition-colors" />
-            <span className="text-sm font-medium text-gray-300 group-hover:text-white">Roopkund</span>
-          </div>
-        </div>
 
       </main>
 
@@ -161,34 +156,34 @@ function App() {
         <ReadyToChoose />
       </div>
       <Footer />
-      
+
       {/* Mobile Menu Overlay - Moved outside nav to ensure full coverage */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[100] bg-slate-900 flex flex-col items-center justify-center space-y-8 animate-fade-in md:hidden">
-            <button 
-              className="absolute top-6 right-6 p-2 text-gray-300 hover:text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <X size={24} />
-            </button>
+          <button
+            className="absolute top-6 right-6 p-2 text-gray-300 hover:text-white"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <X size={24} />
+          </button>
 
-            <a href="#how-it-works" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>How It Works</a>
-            <a href="#compare-section" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Compare</a>
-            <a href="#" className="text-2xl font-bold font-display text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>TrekGenie</a>
-            <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>FAQ</a>
-            <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Destinations</a>
-            <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Blog</a>
-            
-            <a 
-              href="https://scoutripper.com/compare-treks/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-600 bg-white/5 hover:bg-white/10 transition-colors text-sm font-medium mt-4 text-gray-300"
-            >
-              <Search size={16} />
-              <span>Compare</span>
-            </a>
+          <a href="#how-it-works" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>How It Works</a>
+          <a href="#compare-section" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Compare</a>
+          <a href="#" className="text-2xl font-bold font-display text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>TrekGenie</a>
+          <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>FAQ</a>
+          <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Destinations</a>
+          <a href="#" className="text-2xl font-medium text-gray-300 hover:text-white transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Blog</a>
+
+          <a
+            href="https://scoutripper.com/compare-treks/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-600 bg-white/5 hover:bg-white/10 transition-colors text-sm font-medium mt-4 text-gray-300"
+          >
+            <Search size={16} />
+            <span>Compare</span>
+          </a>
         </div>
       )}
 

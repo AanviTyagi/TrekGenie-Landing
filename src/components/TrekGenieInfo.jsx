@@ -6,6 +6,7 @@ const TrekGenieInfo = () => {
   const [userText, setUserText] = useState('');
   const [aiState, setAiState] = useState('idle'); // 'idle' | 'thinking' | 'responding'
   const [visibleCards, setVisibleCards] = useState(0);
+  const [showUserMessage, setShowUserMessage] = useState(false);
   
   const sectionRef = useRef(null);
   const fullUserText = "I'm a beginner looking for a 4-5 day trek in March. Any suggestions?";
@@ -39,44 +40,13 @@ const TrekGenieInfo = () => {
       return;
     }
 
-<<<<<<< Updated upstream
-    let currentIndex = 0;
-    
-    // Typing effect
-    const typingInterval = setInterval(() => {
-      if (currentIndex < fullUserText.length) {
-        setUserText(fullUserText.slice(0, currentIndex + 1));
-        currentIndex++;
-      } else {
-        clearInterval(typingInterval);
-        
-        // Typing done, Start Thinking
-        // Small delay before thinking starts strictly
-        setTimeout(() => {
-           setAiState('thinking');
-           
-           // Thinking Duration -> Reveal Answer
-           setTimeout(() => {
-             setAiState('responding');
-
-             // Stagger Cards
-             setTimeout(() => setVisibleCards(1), 400); // Card 1
-             setTimeout(() => setVisibleCards(2), 550); // Card 2
-             setTimeout(() => setVisibleCards(3), 700); // Card 3
-
-           }, 1200); // 1.2s thinking
-        }, 300);
-      }
-    }, 40); // ~40ms per key
-=======
-    let currentText = "";
     let charIndex = 0;
     let typingInterval;
     let thinkingTimeout;
     let responseTimeout;
     let card1Timeout, card2Timeout, card3Timeout;
 
-    // Start by showing the user message box (empty or with cursor)
+    // Start by showing the user message box
     setShowUserMessage(true);
 
     // Typewriter effect for user message
@@ -103,7 +73,7 @@ const TrekGenieInfo = () => {
           }, 1500); 
         }, 500);
       }
-    }, 40); // 40ms per character for natural typing speed
+    }, 40);
 
     return () => {
       clearInterval(typingInterval);
@@ -113,9 +83,6 @@ const TrekGenieInfo = () => {
       clearTimeout(card2Timeout);
       clearTimeout(card3Timeout);
     };
->>>>>>> Stashed changes
-
-    return () => clearInterval(typingInterval);
   }, [hasTriggered, fullUserText]);
 
   return (
@@ -138,11 +105,7 @@ const TrekGenieInfo = () => {
               <span className="w-2 h-2 rounded-full bg-[#4ec5c1] animate-pulse ml-1"></span>
             </div>
 
-<<<<<<< Updated upstream
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-display font-bold text-slate-900 mb-6 leading-tight">
-=======
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
->>>>>>> Stashed changes
               Not Sure What to <br />
               <span className="text-[#2DD4BF]">Compare?</span>
             </h2>
@@ -207,30 +170,22 @@ const TrekGenieInfo = () => {
                 <div className="flex-grow flex flex-col justify-center min-h-0 pt-8 pb-4 space-y-8">
 
                   {/* User Msg */}
-                  <div className="flex justify-end mt-10 min-h-[60px]"> {/* min-h prevents layout jumping */}
-                    <div className="bg-[#4AC9C5] text-white pt-4 pb-4 rounded-2xl rounded-br-sm max-w-md text-[15px] font-small leading-relaxed shadow-sm transition-all duration-200">
-                      {userText}
-                      {/* Cursor blink effect while typing */}
-                      {hasTriggered && userText.length < fullUserText.length && (
-                        <span className="inline-block w-0.5 h-4 bg-white/70 ml-0.5 animate-pulse align-middle"></span>
-                      )}
+                  {showUserMessage && (
+                    <div className="flex justify-end mt-10 min-h-[60px]"> {/* min-h prevents layout jumping */}
+                      <div className="bg-[#4AC9C5] text-white pt-4 pb-4 rounded-2xl rounded-br-sm max-w-md text-[15px] font-small leading-relaxed shadow-sm transition-all duration-200">
+                        {userText}
+                        {/* Cursor blink effect while typing */}
+                        {hasTriggered && userText.length < fullUserText.length && (
+                          <span className="inline-block w-0.5 h-4 bg-white/70 ml-0.5 animate-pulse align-middle"></span>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   {/* AI Msg Wrapper */}
                   <div className="flex justify-start w-full min-h-[120px]">
                     {/* 1. THINKING STATE */}
                     {aiState === 'thinking' && (
-<<<<<<< Updated upstream
-                        <div className="bg-[#F8FAFC] text-slate-500 px-5 py-4 rounded-2xl rounded-tl-sm text-[14px] font-medium border border-slate-50 animate-pulse flex items-center gap-3">
-                           <div className="flex gap-1">
-                             <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.32s]"></div>
-                             <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.16s]"></div>
-                             <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></div>
-                           </div>
-                           <span>TrekGenie is thinking...</span>
-                        </div>
-=======
                       <div className="bg-[#F8FAFC] text-slate-500 pt-2 pr-4 pb-2 pl-4 rounded-2xl rounded-tl-sm text-[15px] font-medium border border-slate-50 animate-pulse flex items-center gap-3 shadow-sm">
                         <div className="flex gap-1.5">
                           <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.32s]"></div>
@@ -239,40 +194,16 @@ const TrekGenieInfo = () => {
                         </div>
                         <span className="font-sans">TrekGenie is thinking...</span>
                       </div>
->>>>>>> Stashed changes
                     )}
 
                     {/* 2. RESPONSE STATE */}
                     {aiState === 'responding' && (
-<<<<<<< Updated upstream
-                        <div className={`bg-[#F8FAFC] text-slate-600 p-4 rounded-2xl rounded-tl-sm w-full lg:text-[15px] md:text-[12px] text-[10px] font-medium leading-relaxed border border-slate-50 transition-all duration-700 ease-out transform ${aiState === 'responding' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                        <p className="mb-2 font-sans text-slate-700">Great choice! Based on your criteria, I recommend comparing these treks:</p>
-=======
                       <div className={`bg-[#F8FAFC] pt-2 pr-4 pb-6 pl-4 text-slate-600 rounded-2xl rounded-tl-sm w-full lg:text-[15px] md:text-[12px] text-[10px] font-medium leading-relaxed border border-slate-50 transition-all duration-700 ease-out transform ${aiState === 'responding' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                         <p className="mb-2 text-slate-700">Great choice! Based on your criteria, I recommend comparing these treks:</p>
->>>>>>> Stashed changes
 
                         <div className="space-y-1">
                           
                           {/* Trek 1 */}
-<<<<<<< Updated upstream
-                          <div className={`bg-white py-2 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-default transition-all duration-500 ease-out hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                            <span className="w-7 h-7 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text-xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">1</span>
-                            <span className="font-bold text-slate-700 font-sans lg:text-[16px] md:text-[12px] text-[10px] group-hover:text-teal-700 transition-colors">Kedarkantha</span>
-                          </div>
-                          
-                          {/* Trek 2 */}
-                          <div className={`bg-white py-2 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-default transition-all duration-500 ease-out delay-100 hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                            <span className="w-7 h-7 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text -xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">2</span>
-                            <span className="font-bold text-slate-700 font-sans lg:text-[16px] md:text-[12px] text-[10px] group-hover:text-teal-700 transition-colors">Brahmatal</span>
-                          </div>
-                          
-                          {/* Trek 3 */}
-                          <div className={`bg-white py-2 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-default transition-all duration-500 ease-out delay-200 hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                            <span className="w-7 h-7 rounded-full bg-teal-50 text-teal-600 text-sm font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">3</span>
-                            <span className="font-bold text-slate-700 font-sans text-[16px] group-hover:text-teal-700 transition-colors">Kuari Pass</span>
-                          </div>
-=======
                           <a 
                             href="https://scoutripper.com/trekgenie/" 
                             target="_blank" 
@@ -290,7 +221,7 @@ const TrekGenieInfo = () => {
                             rel="noopener noreferrer" 
                             className={`bg-white py-1 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-pointer transition-all duration-500 ease-out delay-100 hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                           >
-                            <span className="w-5 h-5 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text -xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">2</span>
+                            <span className="w-5 h-5 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text-xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">2</span>
                             <span className="w-fit font-bold text-slate-700 lg:text-[16px] md:text-[12px] text-[10px] group-hover:text-teal-700 transition-colors">Brahmatal</span>
                           </a>
 
@@ -299,12 +230,11 @@ const TrekGenieInfo = () => {
                             href="https://scoutripper.com/trekgenie/" 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className={`bg-white py-1 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-pointer transition-all duration-500 ease-out delay-100 hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                            className={`bg-white py-1 px-2 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group cursor-pointer transition-all duration-500 ease-out delay-200 hover:shadow-md hover:border-teal-100 transform ${visibleCards >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                           >
-                            <span className="w-5 h-5 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text -xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">2</span>
+                            <span className="w-5 h-5 rounded-full bg-teal-50 text-teal-600 lg:text-sm md:text-xs text-[10px] font-bold flex items-center justify-center group-hover:bg-teal-100 transition-colors">3</span>
                             <span className="w-fit font-bold text-slate-700 lg:text-[16px] md:text-[12px] text-[10px] group-hover:text-teal-700 transition-colors">Kuari Pass</span>
                           </a>
->>>>>>> Stashed changes
 
                         </div>
                       </div>
