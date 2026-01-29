@@ -7,6 +7,7 @@ const TrekGenieInfo = () => {
   const [aiState, setAiState] = useState('idle'); // 'idle' | 'thinking' | 'responding'
   const [visibleCards, setVisibleCards] = useState(0);
   const [showUserMessage, setShowUserMessage] = useState(false);
+  const [isUserMessageAtBottom, setIsUserMessageAtBottom] = useState(true);
   
   const sectionRef = useRef(null);
   const fullUserText = "I'm a beginner looking for a 4-5 day trek in March. Any suggestions?";
@@ -36,6 +37,7 @@ const TrekGenieInfo = () => {
       setVisibleCards(0);
       setShowUserMessage(false);
       setUserText('');
+      setIsUserMessageAtBottom(true);
       return;
     }
 
@@ -56,20 +58,25 @@ const TrekGenieInfo = () => {
       } else {
         clearInterval(typingInterval);
         
-        // Wait a bit after typing finishes, then switch to thinking
+        // Wait a bit after typing finishes, then "pop up" to the top
         thinkingTimeout = setTimeout(() => {
-          setAiState('thinking');
+          setIsUserMessageAtBottom(false);
 
-          // Thinking for 1.5s, then reveal AI answer
+          // Once it's moved up, start thinking
           responseTimeout = setTimeout(() => {
-            setAiState('responding');
+            setAiState('thinking');
 
-            // Staggered reveal of recommendation cards
-            card1Timeout = setTimeout(() => setVisibleCards(1), 400);
-            card2Timeout = setTimeout(() => setVisibleCards(2), 550);
-            card3Timeout = setTimeout(() => setVisibleCards(3), 700);
+            // Thinking for 1.5s, then reveal AI answer
+            setTimeout(() => {
+              setAiState('responding');
 
-          }, 1500); 
+              // Staggered reveal of recommendation cards
+              card1Timeout = setTimeout(() => setVisibleCards(1), 400);
+              card2Timeout = setTimeout(() => setVisibleCards(2), 550);
+              card3Timeout = setTimeout(() => setVisibleCards(3), 700);
+
+            }, 1500); 
+          }, 600); // Wait for the "pop up" animation to complete
         }, 500);
       }
     }, 40);
@@ -143,10 +150,10 @@ const TrekGenieInfo = () => {
 
           {/* UI Mockup Side */}
           <div className="lg:w-1/2 w-full flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[576px] h-[568px]">
+            <div className="relative w-full max-w-[576px] min-h-[568px] h-fit">
 
               {/* Messages Container */}
-              <div className="bg-white rounded-[32px] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] border border-slate-100 p-6 md:p-8 h-full flex flex-col relative z-10 overflow-hidden">
+              <div className="bg-white rounded-[32px] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] border border-slate-100 p-6 md:p-8 min-h-[568px] h-fit flex flex-col relative z-10 overflow-hidden">
 
                 {/* Header */}
                 <div className="flex items-center gap-4 border-b border-slate-50 pb-5 flex-shrink-0">
@@ -166,12 +173,12 @@ const TrekGenieInfo = () => {
                 </div>
 
                 {/* Chat Area */}
-                <div className="flex-grow flex flex-col justify-start pt-4 pb-4 space-y-6 overflow-y-auto custom-scrollbar pr-1">
+                <div className="flex-grow flex flex-col justify-start pt-4 pb-4 space-y-6 min-h-[380px]">
 
                   {/* User Msg */}
                   {showUserMessage && (
-                    <div className="flex justify-end mt-4">
-                      <div className="bg-[#4AC9C5] text-white py-4 px-6 rounded-2xl rounded-br-sm max-w-[88%] text-[15px] font-medium leading-relaxed shadow-sm transition-all duration-300">
+                    <div className={`flex justify-end mt-4 transition-all duration-700 ease-in-out ${isUserMessageAtBottom ? 'mt-auto translate-y-4' : 'mt-0 translate-y-0'}`}>
+                      <div className="bg-[#4AC9C5] text-white py-4 px-6 rounded-2xl rounded-br-sm max-w-[88%] text-[15px] font-medium leading-relaxed shadow-sm">
                         {userText}
                         {/* Cursor blink effect while typing */}
                         {hasTriggered && userText.length < fullUserText.length && (
@@ -184,15 +191,15 @@ const TrekGenieInfo = () => {
                   {/* AI Msg Wrapper (Stable Container) */}
                   <div className="flex justify-start w-full transition-all duration-500">
                     {(aiState === 'thinking' || aiState === 'responding') && (
-                      <div className="bg-[#F8FAFC] w-full p-5 rounded-2xl rounded-tl-sm border border-slate-50 shadow-sm min-h-[100px] flex flex-col justify-center transition-all duration-500 ease-out">
+                      <div className="bg-[#F8FAFC] w-fit max-w-[85%] p-5 rounded-2xl rounded-tl-sm border border-slate-100 shadow-sm flex flex-col justify-center transition-all duration-500 ease-out">
                         
                         {/* 1. THINKING CONTENT */}
                         {aiState === 'thinking' && (
                           <div className="flex items-center gap-3 animate-pulse">
                             <div className="flex gap-1.5">
-                              <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce [animation-delay:-0.32s]"></div>
-                              <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce [animation-delay:-0.16s]"></div>
-                              <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce"></div>
+                              <div className="w-2 h-1 bg-teal-400 rounded-full animate-bounce [animation-delay:-0.32s]"></div>
+                              <div className="w-2 h-1 bg-teal-400 rounded-full animate-bounce [animation-delay:-0.16s]"></div>
+                              <div className="w-2 h-1 bg-teal-400 rounded-full animate-bounce"></div>
                             </div>
                             <span className="font-sans text-teal-600 font-medium">TrekGenie is thinking...</span>
                           </div>
