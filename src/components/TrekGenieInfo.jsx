@@ -41,48 +41,32 @@ const TrekGenieInfo = () => {
       return;
     }
 
-    let charIndex = 0;
-    let typingInterval;
     let thinkingTimeout;
     let responseTimeout;
     let card1Timeout, card2Timeout, card3Timeout;
 
-    // Start by showing the user message box
+    // Start by showing the user message box with full text immediately
     setShowUserMessage(true);
+    setUserText(fullUserText);
 
-    // Typewriter effect for user message
-    typingInterval = setInterval(() => {
-      if (charIndex <= fullUserText.length) {
-        setUserText(fullUserText.slice(0, charIndex));
-        charIndex++;
-      } else {
-        clearInterval(typingInterval);
-        
-        // Wait a bit after typing finishes, then "pop up" to the top
-        thinkingTimeout = setTimeout(() => {
-          setIsUserMessageAtBottom(false);
+    // Message stays at bottom for 1.5 seconds, then starts animating up
+    thinkingTimeout = setTimeout(() => {
+      setIsUserMessageAtBottom(false);
+      setAiState('thinking');
 
-          // Once it's moved up, start thinking
-          responseTimeout = setTimeout(() => {
-            setAiState('thinking');
+      // Thinking for 2 seconds, then reveal AI answer
+      responseTimeout = setTimeout(() => {
+        setAiState('responding');
 
-            // Thinking for 1.5s, then reveal AI answer
-            setTimeout(() => {
-              setAiState('responding');
+        // Staggered reveal of recommendation cards
+        card1Timeout = setTimeout(() => setVisibleCards(1), 400);
+        card2Timeout = setTimeout(() => setVisibleCards(2), 550);
+        card3Timeout = setTimeout(() => setVisibleCards(3), 700);
 
-              // Staggered reveal of recommendation cards
-              card1Timeout = setTimeout(() => setVisibleCards(1), 400);
-              card2Timeout = setTimeout(() => setVisibleCards(2), 550);
-              card3Timeout = setTimeout(() => setVisibleCards(3), 700);
-
-            }, 1500); 
-          }, 600); // Wait for the "pop up" animation to complete
-        }, 500);
-      }
-    }, 40);
+      }, 2000);
+    }, 1500);
 
     return () => {
-      clearInterval(typingInterval);
       clearTimeout(thinkingTimeout);
       clearTimeout(responseTimeout);
       clearTimeout(card1Timeout);
@@ -177,13 +161,9 @@ const TrekGenieInfo = () => {
 
                   {/* User Msg */}
                   {showUserMessage && (
-                    <div className={`flex justify-end mt-4 transition-all duration-700 ease-in-out ${isUserMessageAtBottom ? 'mt-auto translate-y-4' : 'mt-0 translate-y-0'}`}>
+                    <div className={`flex justify-end transition-all duration-1000 ease-out ${isUserMessageAtBottom ? 'mt-auto' : 'mt-0'}`}>
                       <div className="bg-[#4AC9C5] text-white py-4 px-6 rounded-2xl rounded-br-sm max-w-[88%] text-[15px] font-medium leading-relaxed shadow-sm">
                         {userText}
-                        {/* Cursor blink effect while typing */}
-                        {hasTriggered && userText.length < fullUserText.length && (
-                          <span className="inline-block w-0.5 h-4 bg-white/70 ml-0.5 animate-pulse align-middle"></span>
-                        )}
                       </div>
                     </div>
                   )}
